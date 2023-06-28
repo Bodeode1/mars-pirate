@@ -154,7 +154,7 @@ def check_guess(guess: int, alien_cell: int):
 def play_game():
     """
     Starts the game loop.
-    
+
     """
     while play_game:
         alien_position = randint(1, 5)
@@ -180,4 +180,57 @@ def play_game():
         except GameOverException as _:
             break
 
+def main():
+    """
+    Launches the game board
 
+    """
+
+    clear_terminal() 
+    show_game_title() 
+
+    left_text = '1. Play Pirates of Mars | '
+    center_text = '2. Read Playing Instructions |'
+    right_text = '3. Game History'
+    print('-' * 100)
+    print(f'{left_text : <20}{center_text : ^20}{right_text : ^20}')
+    print('-' * 100)
+
+    selected_nav = input('Select an option: ')
+    navigations = ['1', '2', '3']
+
+    if selected_nav not in navigations:
+        # Invalid input, display error message and retry
+        print(f'{Fore.RED} Please, select either  1 , 2 , or 3')
+        time.sleep(2)
+        main() 
+    elif selected_nav == '1':
+        # Play Pirate of Mars option selected
+        clear_terminal()
+        play_game()
+    elif selected_nav == '2':
+        # Read Playing Intructions option selected
+        show_game_instructions()
+        launch_main_menu() 
+    elif selected_nav == '3':
+        # Game History option selected
+        print("Yet to be implemented")
+        print() 
+        launch_main_menu() 
+    
+def launch_main_menu() : 
+    """
+    Prompts the user to return to the main menu or exit the game
+
+    """
+    launch = input("Do you want to return to the main menu y/n? : ") 
+    if launch == "y":
+        # Return to the main menu
+        main() 
+    else:
+        # Clear the terminal and exit the game
+        clear_terminal()
+
+if __name__ == "__main__":
+    # Start the game by calling the main function
+    main()
