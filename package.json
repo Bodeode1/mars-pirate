@@ -1,23 +1,21 @@
 {
-  "name": "terminal",
+  "name": "mars-pirate",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "A CLI Game that sees a player kill alien pirates",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lechien73/terminal.git"
-  },
+  "keywords": [
+    "Game",
+    "Python",
+    "CLI"
+  ],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lechien73/terminal/issues"
-  },
-  "homepage": "https://github.com/lechien73/terminal#readme",
   "dependencies": {
+    "node-pty": "^1.0.0",
     "node-static": "^0.7.11",
-    "node-pty": "^0.10.1",
-    "total4": "^0.0.45"
+    "total4": "^0.0.85"
   }
 }
