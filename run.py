@@ -113,4 +113,71 @@ def end_game_moderator(play_count: int, maximum_play: int):
 
     return play_game
 
+def record_score(alien_cell: int, player_shot: int, duration: int):
+    """
+    Records and stores the game statistics
+
+    Parameters:
+        alien_cell (int): The position of the alien.
+        player_shot (int): The player's guess.
+        duration (int): The time taken for the guess.
+
+    Returns:
+        gameboard (list): Updated gameboard containing the game statistics.
+    
+    """
+
+    gameboard.append({
+        "time_to_play": duration,
+        "alien_position": alien_cell,
+        "your_guess": player_shot,
+        "verdict": "correct" if alien_cell == player_shot else "wrong",
+        "point_earned": 1 if alien_cell == player_shot else 0
+    })
+    return gameboard
+
+
+def check_guess(guess: int, alien_cell: int):
+    """
+    Checks the player's guess against the alien cell and prints the result.
+
+    Parameters:
+        guess (int): The player's guess.
+        alien_cell (int): The position of the alien.
+    """
+    if guess == alien_cell:
+        print("Congratulations!!! You just killed an Alien")
+    else:
+        print("You are wrong. The Alien was at {}".format(alien_cell))
+
+
+def play_game():
+    """
+    Starts the game loop.
+    
+    """
+    while play_game:
+        alien_position = randint(1, 5)
+        try:
+            first_shot = "Guess the alien cell, so a shot can be fired: "
+            another_shot = "Make another guess, let us shoot the alien: "
+
+            shot_message = first_shot if len(gameboard) == 0 else another_shot
+
+            guess_start_time = time.time()
+            player_guess = int(input(shot_message))
+
+            guess_end_time = time.time()
+
+            time_taken_to_guess = guess_end_time - guess_start_time
+
+            record_score(alien_position, player_guess, time_taken_to_guess)
+            check_guess(player_guess, alien_position)
+
+            end_game_moderator(len(gameboard), maximum_trial)
+        except ValueError as _:
+            print(Fore.RED + "Please enter a number")
+        except GameOverException as _:
+            break
+
 
