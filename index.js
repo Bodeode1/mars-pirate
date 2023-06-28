@@ -10,7 +10,7 @@ options.port = parseInt(process.env.PORT);
 // options.unixsocket = require('path').join(require('os').tmpdir(), 'app_name');
 // options.config = { name: 'Total.js' };
 // options.sleep = 3000;
-// options.inspector = 9229;
+// options.insector = 9229;
 // options.watch = ['private'];
 // options.livereload = 'https://yourhostname';
 
