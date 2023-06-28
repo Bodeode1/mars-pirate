@@ -78,30 +78,3 @@ maximum_trial = 5
 global play_game
 play_game = True
 
-class GameOverException(Exception):
-    def __init__(self,message):
-        pass 
-        self.message = message 
-    
-def end_game_moderator(play_count : int , maximum_play : int):
-
-    """
-    Checks if the game should be ended based on the maximum number of plays.
-
-    Parameters:
-        play_count (int): The current play count.
-        maximum_play (int): The maximum number of plays allowed.
-
-    """
-    points = 0 
-    global play_game
-    for score in gameboard :
-        if score.get("point_earned") == 1 :
-            points = points + 1
-    if(play_count == maximum_play):
-        #Print a message indicating the end of the game
-        print("Take a look at your game history") 
-        for score in gameboard:
-            print(score)
-            print() 
-     
