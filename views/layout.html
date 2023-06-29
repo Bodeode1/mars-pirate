@@ -34,3 +34,31 @@
             justify-content: center;
             
         }
+
+
+         /**
+        * Default styles for xterm.js
+        */
+
+        .xterm {
+            font-feature-settings: "liga" 0;
+            position: relative;
+            user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .xterm.focus,
+        .xterm:focus {
+            outline: none;
+        }
+
+        .xterm .xterm-helpers {
+            position: absolute;
+            top: 0;
+            /**
+          * The z-index of the helpers must be higher than the canvases in order for
+        * IMEs to appear on top.
+        */
+        z-index: 5;
+        }
