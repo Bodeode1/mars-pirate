@@ -8,40 +8,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
-    <title>Mars Pirate </title>
+    <title>Python Terminal by Code Institute</title>
     <style>
         body {
-            background : #eee
-        }
-        #terminal {
-            display : flex ; 
-            justify-content: center;
-            align-items: center;
-        }
-        #spacer {
-            height: 160px;
+            font-family: Arial;
         }
 
-        #computer_background {
-            background-image: url('https://raw.githubusercontent.com/paulio11/P3-Hangman-Python-Terminal-Game/main/assets/page-background.jpeg');
-            background-position: top;
-            background-repeat: no-repeat;
-            height: 100vh;
-        }
-
-        #terminal {
-            display: flex;
-            justify-content: center;
-            
-        }
-
-
-         /**
+        /**
         * Default styles for xterm.js
         */
 
         .xterm {
-            font-feature-settings: "liga" 0;
+            font-feature-settings: "liga"0;
             position: relative;
             user-select: none;
             -ms-user-select: none;
@@ -57,10 +35,10 @@
             position: absolute;
             top: 0;
             /**
-          * The z-index of the helpers must be higher than the canvases in order for
+        * The z-index of the helpers must be higher than the canvases in order for
         * IMEs to appear on top.
         */
-        z-index: 5;
+            z-index: 5;
         }
 
         .xterm .xterm-helper-textarea {
@@ -98,7 +76,7 @@
         .xterm .xterm-viewport {
             /* On OS X this is required in order for the scroll bar to appear fully opaque */
             background-color: #000;
-            overflow-y: hidden;
+            overflow-y: scroll;
             cursor: default;
             position: absolute;
             right: 0;
@@ -180,7 +158,7 @@
         button {
             width: 200px;
             height: 40px;
-            background-color: #028397;
+            background-color: #E84610;
             border: 1px solid grey;
             color: white;
             text-transform: uppercase;
@@ -192,4 +170,4 @@
 
 @{body}
 
-</html> 
+</html>
