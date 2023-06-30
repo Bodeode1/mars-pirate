@@ -192,7 +192,7 @@ def main():
     center_text = '2. Read Playing Instructions |'
     right_text = '3. Game History'
     print('-' * 100)
-    print(f'{left_text:<20}{center_text:^20}{right_text : ^20}')
+    print(f'{left_text:<20}{center_text:^20}{right_text:^20}')
     print('-' * 100)
 
     selected_nav = input('Select an option: ')
