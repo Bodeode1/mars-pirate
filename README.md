@@ -9,17 +9,20 @@
     1. [How To Play](#How-To-Play)
 2. [UX](#UX)
     1. [Ideal User Demographic](#Ideal-User-Demographic)
-    2. [User Stories](#User-Stories)
-    3. [Development Planes](#Development-Planes)
-3. [Features](#Features) 
+    2. [New User Goals](#new-user-goals)
+    3. [Current User](#current-user)
+    4. [Development Planes](#Development-Planes)
+3.  [Strategy](#strategy)
+4.  [Scope](#scope)
+5. [Features](#Features) 
     1. [Features](#features)
     2. [Imagery](#Imagery)
     3. [Features to Implement in the future](#Features-to-Implement-in-the-future)
-4. [Issues and Bugs](#Issues-and-Bugs)
-5. [Technologies Used](#Technologies-Used)
+6. [Issues and Bugs](#Issues-and-Bugs)
+7. [Technologies Used](#Technologies-Used)
     1. [Main Languages Used](#Main-Languages-Used)
     3. [Frameworks, Libraries & Programs Used](#Frameworks,-Libraries-&-Programs-Used)
-6. [Testing](#Testing)
+8. [Testing](#Testing)
     1. [Testing User Stories](#Testing-User-Stories)
     2. [Manual Testing](#Manual-Testing)
     3. [Automated Testing](#Automated-Testing) 
@@ -29,8 +32,7 @@
     1. [Deploying on GitHub Pages](#Deploying-on-GitHub-Pages)
 8. [Credits](#Credits)
     1. [Content](#Content)
-    2. [Media](#Media)
-    3. [Code](#Code)
+    2. [Code](#Code)
 9. [Acknowledgements](#Acknowledgements)
 ***
 
@@ -127,12 +129,9 @@ Potential features that could be implemented into the "Pirate of Mars" game in t
 [Back to top ⇧](#)
 
 ## Issues and Bugs 
-The developer ran into several issues during the development of the website, with the noteworthy ones listed below, along with solutions or ideas to implement in the future.
+Two bugs were encountered during the development of the project. The first bug relates to the end game section. During the initial manual testing, the developer realized that the end game functionality did not work. However, this was fixed by creating a variable to track the game state.
 
-- Solved Bugs
-    - A bug I came across was the players error message for when placing a ship which overlaps over existing ships or doesn’t fit the board was being printed when it was the computers turn to place its ships. I fixed it by using a for loop in the players turn of the place ship function to print the message therefore no message would be printed if the computers ship overlapped or did not fit the board. 
-
-    - A bug was found when replaying the game the board was not clearing the ships from the previous game. I fixed this by adding a reset funtion this clears the board so the game can be played again without exiting and restarting the app.
+The second bug relates to clearing the contents of the terminal screen. Initially, the screen would not clear, but this was resolved by including the clear key as a parameter in the os.system function.
 
 - Remaining Bugs
     - No bugs remaining.
@@ -258,18 +257,17 @@ To deploy this project to Heroku from its GitHub repository, the following steps
 The webpage [GitHub Docs - Fork a repo](https://docs.github.com/en/github-ae@latest/get-started/quickstart/fork-a-repo "Link to a GitHub Docs article on cloning and forking a repository") was used to get instructions on forking and cloning a repository. This information was used in the Deployment section of the README file.
 
 ### Code 
-The developer referred to various websites to enhance his understanding of the code being implemented. Codes from W3School, Developer Mozilla, amd Code with Moss were adopted for use in this project. The following websites were frequently consulted:
+The developer referred to various websites to enhance his understanding of the code being implemented. Codes from W3School, Developer Mozilla, and Code with Mosh were adopted for use in this project. The following websites were frequently consulted:
 - [Stack Overflow](https://stackoverflow.com/ "Link to Stack Overflow page")
 - [W3Schools](https://www.w3schools.com/ "Link to W3Schools page")
 - [Developer Mozilla](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "link to mozilla website")
-- [Heroku](https://fruit-hunter.herokuapp.com/ "Link to another students game on heroku")
+- [Code with Moss](https://codewithmosh.com/ "Link to another students game on heroku")
 
 [Back to top ⇧](#)
 
 ## Acknowledgements
 
-- I would like to thank my family for their valued opinions and critic during the process of design and development.
-- I would like to thank my tutor Seun, for their invaluable help and guidance throughout the process encouraging me to push myself and make a better project.
-- Lastly, I would like to extend my deepest gratitude to the amazing people in Slack who helped me rigorously test every aspect of my site.
+- I would like to thank my wife for her support and honest opinion during the process of design and development.
+- I would like to thank my tutor Seun, for help and guidance throughout the development of this project.
 
 [Back to top ⇧](#)
