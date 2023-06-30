@@ -1,4 +1,3 @@
-
 import time   
 from random import randint
 import os  
@@ -43,7 +42,7 @@ def show_game_instructions():
     print("To start the game, press y to start and n to stop.")
     print("You can play the game 5 times, and you need to kill 3 aliens to win.")
     print("You kill an alien when you fire your weapon at their hiding cell.")
-    print("The cells are numbered from 1 to 9(10 not inclusive).")
+    print("The cells are numbered from 1 to 3.")
     print("For example, if you need to kill an alien at cell 4, you will enter 4 when prompted")
 
 def collect_player_input(message:"str"):
@@ -157,7 +156,7 @@ def play_game():
 
     """
     while play_game:
-        alien_position = randint(1, 5)
+        alien_position = randint(1, 3)
         try:
             first_shot = "Guess the alien cell, so a shot can be fired: "
             another_shot = "Make another guess, let us shoot the alien: "
@@ -193,7 +192,7 @@ def main():
     center_text = '2. Read Playing Instructions |'
     right_text = '3. Game History'
     print('-' * 100)
-    print(f'{left_text : <20}{center_text : ^20}{right_text : ^20}')
+    print(f'{left_text:<20}{center_text:^20}{right_text : ^20}')
     print('-' * 100)
 
     selected_nav = input('Select an option: ')
