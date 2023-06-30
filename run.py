@@ -218,7 +218,7 @@ def main():
         print() 
         launch_main_menu() 
     
-def launch_main_menu() : 
+def launch_main_menu(): 
     """
     Prompts the user to return to the main menu or exit the game
 
