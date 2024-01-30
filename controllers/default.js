@@ -1,60 +1,60 @@
+// Import the 'node-pty' module for creating pseudo-terminals
 const Pty = require('node-pty');
-const fs = require('fs');
 
+// Exported function for installing routes
 exports.install = function () {
+    // Define a route for the root path '/'
 
     ROUTE('/');
-    WEBSOCKET('/', socket, ['raw']);
+    
+    ROUTE('GET /tests', function(){
+        this.json({
+            message : "This is a test route"
+        })
+    });
+
+    // Define a WebSocket route for handling communication over a WebSocket connection 
+    ROUTE('SOCKET /', WebSocketHandler, ['raw']);
 
 };
 
-function socket() {
+// WebSocket handler function
+function WebSocketHandler() {
 
-    this.encodedecode = false;
-    this.autodestroy();
+    var self = this;
+    
+    // Disable encoding and decoding for raw WebSocket communication
+    self.encodedecode = false;
 
-    this.on('open', function (client) {
+    // Automatically destroy the WebSocket connection when it is closed
+    self.autodestroy();
 
-        // Spawn terminal
-        client.tty = Pty.spawn('python3', ['run.py'], {
+    // Event handler for when a Websocket connection is opened
+    self.on('open', function(client) {
+        // Create a new pseudo-terminal for each client
+        client.tty = Pty.spawn('pyton3', ['main.py'], {
             name: 'xterm-color',
-            cols: 80,
-            rows: 24,
+            cols: 120,
+            rows: 30,
             cwd: process.env.PWD,
             env: process.env
         });
 
-        client.tty.on('exit', function (code, signal) {
+        // Event handler for when the pseudo-terminal exits
+        client.tty.on('exit', function(code, signal) {
+            // clean up resources when the terminal exits
             client.tty = null;
             client.close();
-            console.log("Process killed");
         });
 
-        client.tty.on('data', function (data) {
+        // Event handler for when data is received fron the pseudo-terminal
+        client.tty.on('data', function(data) {
+            // Send the received data to the WebSocket client
             client.send(data);
         });
-
     });
 
-    this.on('close', function (client) {
-        if (client.tty) {
-            client.tty.kill(9);
-            client.tty = null;
-            console.log("Process killed and terminal unloaded");
-        }
-    });
-
-    this.on('message', function (client, msg) {
-        client.tty && client.tty.write(msg);
-    });
-}
-
-if (process.env.CREDS != null) {
-    console.log("Creating creds.json file.");
-    fs.writeFile('creds.json', process.env.CREDS, 'utf8', function (err) {
-        if (err) {
-            console.log('Error writing file: ', err);
-            socket.emit("console_output", "Error saving credentials: " + err);
-        }
-    });
-}
+    // Event handler for when a WebSocket connection is closed
+    self.on('close', function(client) {
+        // Kill the pseudo-terminal if it exists
+    }) 
