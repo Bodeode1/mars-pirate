@@ -57,4 +57,15 @@ function WebSocketHandler() {
     // Event handler for when a WebSocket connection is closed
     self.on('close', function(client) {
         // Kill the pseudo-terminal if it exists
-    }) 
+        if (client.tty) {
+            client.tty.kill(9);
+            client.tty = null;
+        }
+
+    });
+    // Event handler for when a message is receieved from webscocket client
+    self.on('message', function(client, msg) {
+        // Write the received message to the pseudo-terminal if it exists
+        client.tty && client.tty.write(msg);
+    });
+}
