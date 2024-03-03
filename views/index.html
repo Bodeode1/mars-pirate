@@ -1,37 +1,23 @@
-<!-- HTML: Create a container for the terminal with the id 'terminal' -->
 <div id="terminal"></div>
-
-<!-- HTML: Create a button to restart the page -->
 <button onclick="window.location.reload()">Restart</button>
-
-<!-- JavaScript: Initialize and configure a new Terminal instance -->
 <script>
 
-    // Create a new Terminal instance with specified columns and rows
     var term = new Terminal({ cols: 120, rows: 30 });
 
-    // Open the terminal in the HTML element with the id 'terminal'
     term.open(document.getElementById('terminal'));
-
-    // Write initial messages to the terminal
     term.writeln('Running Game Launch Command: python3 main.py');
     term.writeln('');
 
-    // Create a WebSocket connection to the server using the current location
+
     var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (':' + location.port) : '') + '/');
 
-    // Event handler for when the WebSocket connection is opened
     ws.onopen = function() {
-        // Attach the terminal to the WebSocket for bidirectional communication
         new attach.attach(term, ws);
     };
 
-    // Event handler for WebSocket errors
     ws.onerror = function(e) {
-        // Log any errors to the console
         console.log(e);
     };
 
-    // Focus on the first textarea element with the class 'xterm-helper-textarea'
     document.querySelectorAll(".xterm-helper-textarea")[0].focus();
 </script>
