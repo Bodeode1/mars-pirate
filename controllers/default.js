@@ -1,71 +1,52 @@
-// Import the 'node-pty' module for creating pseudo-terminals
 const Pty = require('node-pty');
 
-// Exported function for installing routes
-exports.install = function () {
-    // Define a route for the root path '/'
+exports.install = function() {
 
+    // Route to views/index
     ROUTE('/');
-    
-    ROUTE('GET /tests', function(){
-        this.json({
-            message : "This is a test route"
-        })
-    });
-
-    // Define a WebSocket route for handling communication over a WebSocket connection 
-    ROUTE('SOCKET /', WebSocketHandler, ['raw']);
+    // WebSocket route
+    ROUTE('SOCKET /', webSocketHandler, ['raw']);
 
 };
 
-// WebSocket handler function
-function WebSocketHandler() {
+function webSocketHandler() {
 
     var self = this;
-    
-    // Disable encoding and decoding for raw WebSocket communication
-    self.encodedecode = false;
 
-    // Automatically destroy the WebSocket connection when it is closed
+    self.encodedecode = false;
     self.autodestroy();
 
-    // Event handler for when a Websocket connection is opened
     self.on('open', function(client) {
-        // Create a new pseudo-terminal for each client
-        client.tty = Pty.spawn('pyton3', ['main.py'], {
-            name: 'xterm-color',
-            cols: 120,
-            rows: 30,
-            cwd: process.env.PWD,
-            env: process.env
+
+        // Each client will have own terminal
+        client.tty = Pty.spawn('python3', ['run.py'], { 
+            name: 'xterm-color', 
+            cols: 120, 
+            rows: 30, 
+            cwd: process.env.PWD, 
+            env: process.env 
         });
 
-        // Event handler for when the pseudo-terminal exits
         client.tty.on('exit', function(code, signal) {
-            // clean up resources when the terminal exits
+            // What now?
             client.tty = null;
             client.close();
         });
 
-        // Event handler for when data is received fron the pseudo-terminal
         client.tty.on('data', function(data) {
-            // Send the received data to the WebSocket client
             client.send(data);
         });
+
     });
 
-    // Event handler for when a WebSocket connection is closed
     self.on('close', function(client) {
-        // Kill the pseudo-terminal if it exists
         if (client.tty) {
             client.tty.kill(9);
             client.tty = null;
         }
-
     });
-    // Event handler for when a message is receieved from webscocket client
+
     self.on('message', function(client, msg) {
-        // Write the received message to the pseudo-terminal if it exists
         client.tty && client.tty.write(msg);
     });
 }
