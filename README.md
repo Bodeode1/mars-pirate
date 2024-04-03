@@ -172,6 +172,8 @@ Manual testing has been performed on the Pirate of Mars code to ensure its funct
    - Game History: The game history option was accessed from the main menu. The game history should be displayed accurately, showcasing the relevant details of each game played.
    - Return to Main Menu: After completing a game or accessing game history, the option to return to the main menu was selected. The game should navigate back to the main menu successfully.
 
+![Introductory Message]()
+
 ## Automated Testing
 
 ### Code Validation
