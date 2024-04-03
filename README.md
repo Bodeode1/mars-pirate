@@ -173,7 +173,7 @@ Manual testing has been performed on the Pirate of Mars code to ensure its funct
    - Return to Main Menu: After completing a game or accessing game history, the option to return to the main menu was selected. The game should navigate back to the main menu successfully.
 
 ### Imagery
-![Introductory Message](/assets/)
+![Introductory Message](assets/Screenshot 2024-04-03 11.29.53.png)
 ![Play Game](/assets/pirate-ship-two.png)
 ![Instructions](/assets/pirate-ship-three.png)
 ![Game History](/assets/pirate-ship-four.png)
