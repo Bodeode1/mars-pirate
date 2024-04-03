@@ -174,8 +174,8 @@ Manual testing has been performed on the Pirate of Mars code to ensure its funct
 
 ### Imagery
 ![Introductory Message](assets/Screenshot 2024-04-03 11.29.53.png)
-![Play Game](/assets/pirate-ship-two.png)
-![Instructions](/assets/pirate-ship-three.png)
+![Play Game](assets/Screenshot 2024-04-03 11.28.10.png)
+![Instructions]()
 ![Game History](/assets/pirate-ship-four.png)
 
 ## Automated Testing
